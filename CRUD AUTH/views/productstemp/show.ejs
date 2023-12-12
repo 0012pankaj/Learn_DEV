@@ -1,0 +1,34 @@
+
+<% layout('layouts/boilerpalte') -%> 
+<!-- to insert this page in main part of boilerpaltewhere body tag inserted  -->
+<nav class="mb-5">
+  <%- include('../partials/navebar') -%>
+</nav>
+
+<div class="row">
+ <div class="col-lg-6">
+      <!-- card--- -->
+      <div class="card mx-auto mt-5 shadow-lg " style="width: 18rem;border-radius: 20px; height: max-content;">
+        <img src= "<%=product.img%>" class="card-img-top" alt="..." style=" padding: 10px; height:200px">
+        <div class="card-body">
+          <h5 class="card-title"><%= product.name %></h5>
+          <p class="card-text"><%= product.dec %>.....</p>
+          <h5 class="card-title">$ <%= product.price %></h5>
+          <a href="/products/<%=product._id%>/edit" class="btn btn-primary btn-sm">EDIT</a>
+          <a href="#" class="btn btn-success  btn-sm">BUY</a>
+          <a href="#" class="btn btn-secondary  btn-sm">Add to CART</a>
+
+          <!-- //use form for method overide and post request delete -->
+          <form action="/products/<%=product.id%>?_method=DELETE" method="POST">
+         <button class="btn btn-danger  btn-sm mt-1">DELETE</button>
+         </form>
+          
+        </div>
+      </div> 
+
+
+ </div>
+ <div class="col-lg-6">
+    <H1>REVIEW SECTION</H1>
+ </div>
+</div>
