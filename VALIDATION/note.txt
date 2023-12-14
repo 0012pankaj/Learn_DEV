@@ -1,0 +1,21 @@
+VALIDATION
+1.CLIENT-SIDE --USING BOOTSTRAP
+2.SERVER-SIDE --USING JOI npm package
+
+---------------------------
+1.CLIENT-SIDE 
+ a. in all the forms where we take input and want validation add "required" tag
+ b. in form elemet add "novalidation" tag
+ c. add require javascript for needs-validation from BOOTSTRAP
+ d. add class "needs-validation" in form elemet
+ e. add the "div" of feedback messege below input and change messege accoringly
+
+----------------------------
+
+2.SERVER-SIDE
+a.npm i joi 
+b.create joiSchema.js file to create schema for reqvalidation joi and export 
+c.create middleware file where we put all our req middleware and in thi req our schema.
+d.create middleware inside .validate() use in it we create middlewares for
+  validate and use them in between routs when Create and update rout with post patch req come
+e.require middle ware in ...route file and use

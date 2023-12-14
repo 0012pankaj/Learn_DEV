@@ -1,0 +1,23 @@
+
+<% layout('layouts/boilerpalte') -%> 
+<!-- to insert this page in main part of boilerpaltewhere body tag inserted  -->
+
+<div class="row">
+    <% for( let product of products){ %>
+    <div class="col-md-4">
+      <!-- placed card  -->
+      <div class="card mx-4 mt-5 shadow-lg " stylne="width: 18rem;border-radius: 20px; height: max-content;">
+        <img src= "<%=product.img%>" class="card-img-top " alt="..." style=" padding: 10px; height:200px ">
+        <div class="card-body">
+          <h5 class="card-title"><%= product.name %></h5>
+          <p class="card-text"><%= product.dec %>.....</p>
+          <h5 class="card-title">$ <%= product.price %></h5>
+          <a href="/products/<%=product._id%>" class="btn btn-primary">buy</a>
+        </div>
+      </div> 
+      <!-- placed card  --> 
+      
+    </div>
+    <%}%>
+   
+</div>
