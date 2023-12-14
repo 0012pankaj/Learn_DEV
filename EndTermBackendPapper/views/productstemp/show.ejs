@@ -1,0 +1,31 @@
+
+<% layout('layouts/boilerpalte') -%> 
+<!-- to insert this page in main part of boilerpaltewhere body tag inserted  -->
+<nav class="mb-5">
+  <%- include('../partials/navebar') -%>
+</nav>
+
+<div class="row">
+ <div class="col-lg-6">
+      <!-- card--- -->
+      <div class="card mx-auto mt-5 shadow-lg " style="width: 18rem;border-radius: 20px; height: max-content;">
+        <div class="card-body">
+          <h5 class="card-title"><%= product.comedianName %></h5>
+          <h5 class="card-title">Total-Shows :<%= product.totalShows %></h5>
+       
+          <a href="/standup/<%=product._id%>/edit" class="btn btn-primary btn-sm">EDIT</a>
+
+          <!-- //use form for method overide and post request delete -->
+          <form action="/standup/<%=product.id%>?_method=DELETE" method="POST">
+         <button class="btn btn-danger  btn-sm mt-1">DELETE</button>
+         </form>
+          
+        </div>
+      </div> 
+
+
+ </div>
+ <div class="col-lg-6">
+  <h2 class="mt-5">Edit and Delete shows</h2>
+ </div>
+</div>

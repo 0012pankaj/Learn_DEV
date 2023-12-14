@@ -1,0 +1,60 @@
+<% layout('layouts/boilerpalte') -%> 
+<!-- to insert this page in main part of boilerpaltewhere body tag inserted  -->
+<nav class="mb-5">
+  <%- include('../partials/navebar') -%>
+</nav>
+
+<div class="row">
+  <div class="col-md-6 mx-auto my-5">
+   
+    <form   action="/standup" method="POST" class="needs-validation" novalidate>
+       
+       <div class="mb-3">
+          <label for="comedianName" class="form-label">comedianName:</label>
+          <input type="text" class="form-control" id="comedianName" name="comedianName" required >  
+          <div class="valid-feedback">
+            Looks good!
+          </div>
+          <div class="invalid-feedback">
+            Please fill!
+          </div>       
+        </div>
+
+
+        <div class="mb-3">
+          <label for="totalShows" class="form-label">totalShows:</label>
+          <input type="text" class="form-control" id="totalShows" name="totalShows" required> 
+          <div class="valid-feedback">
+            Looks good!
+          </div>  
+          <div class="invalid-feedback">
+            Please fill!
+          </div>      
+        </div>
+
+        <button type="submit" class="btn btn-success">ADD+</button>
+      </form>
+  </div>
+</div>
+<script>
+  // Example starter JavaScript for disabling form submissions if there are invalid fields
+(function () {
+  'use strict'
+
+  // Fetch all the forms we want to apply custom Bootstrap validation styles to
+  var forms = document.querySelectorAll('.needs-validation')
+
+  // Loop over them and prevent submission
+  Array.prototype.slice.call(forms)
+    .forEach(function (form) {
+      form.addEventListener('submit', function (event) {
+        if (!form.checkValidity()) {
+          event.preventDefault()
+          event.stopPropagation()
+        }
+
+        form.classList.add('was-validated')
+      }, false)
+    })
+})()
+</script>

@@ -1,0 +1,25 @@
+
+<% layout('layouts/boilerpalte') -%> 
+<!-- to insert this page in main part of boilerpaltewhere body tag inserted  -->
+
+<nav class="mb-5">
+  <%- include('../partials/navebar') -%>
+</nav>
+
+<div class="row">
+    <% for( let product of products){ %>
+    <div class="col-md-4">
+      <!-- placed card  -->
+      <div class="card mx-auto mt-5 shadow-lg " stylne="width: 18rem;border-radius: 20px; height: max-content;">
+        <div class="card-body">
+          <h5 class="card-title"><%= product.comedianName %></h5>
+          <h5 class="card-title">Total-Show: <%= product.totalShows %></h5>
+          <a href="/standup/<%=product._id%>" class="btn btn-primary">See</a>
+        </div>
+      </div> 
+      <!-- placed card  --> 
+      
+    </div>
+    <%}%>
+   
+</div>
