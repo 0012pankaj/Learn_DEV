@@ -1,0 +1,43 @@
+FLASH- (using connect-flash & express-session) 
+connect-flash (middleware in Node.js):
+
+In the context of your previous error messages, "flash" 
+likely refers to the connect-flash middleware in Node.js. 
+This middleware is used with frameworks like Express to store
+ messages in the session, which can be retrieved and displayed 
+ to the user on a subsequent request.
+
+For example, it's commonly used for displaying flash messages
+ after a form submission. If the submission is successful, a success
+  message might be stored in the session and displayed to the user on the next page.
+-----------------------------------------------------------------------------------------
+Here's a simple example of how it might be used in an Express route:
+
+const express = require('express');
+const session = require('express-session');
+const flash = require('connect-flash');
+
+const app = express();
+
+app.use(session({
+    secret: 'your-secret-key',
+    resave: true,
+    saveUninitialized: true
+}));
+
+app.use(flash());
+
+app.get('/example', (req, res) => {
+    req.flash('success', 'This is a success message');
+    res.redirect('/');
+});
+
+app.get('/', (req, res) => {
+    const successMessage = req.flash('success');
+    res.render('index', { successMessage });
+});
+
+app.listen(3000, () => {
+    console.log('Server is running on port 3000');
+});
+--------------------------------------------------------------------------------------------
