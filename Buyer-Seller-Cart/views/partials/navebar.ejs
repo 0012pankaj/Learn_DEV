@@ -1,0 +1,39 @@
+<nav class="navbar fixed-top navbar-expand-lg bg-body-tertiary shadow-lg">
+    <div class="container-fluid">
+      <a class="navbar-brand" style=" font-family:Cursive;  text-shadow: 2px 2px 5px rgb(94, 129, 210);" href="/products">Shopping-Cart</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/products">Home</a>
+          </li>
+          <!-- hide from buyer new button -->
+          <% if(currentUser && currentUser.role === 'seller'){ %> 
+          <li class="nav-item">
+            <a class="nav-link" href="/products/new">NEW</a>
+          </li>  
+          <% }%>   
+        </ul>
+
+        <% if(!currentUser){ %>
+        <form class="d-flex" action="/login" method="GET">
+          <button class="btn btn-outline-success" type="submit">Login</button>
+        </form>
+        <% }  else{%>
+          <a href="/user/cart" class="nav-link mx-1">
+            <i class="fa-solid fa-cart-shopping"></i>
+            <sup> <span class="badge bg-danger" ><%= currentUser.cart.length %></span> </sup>
+          </a>
+          <!-- &#128526; -->
+          <button type="button" class="btn  mx-2" style="font-family:Cursive;  text-shadow: 2px 2px 5px rgb(238, 144, 144);  font-size: 20px;" ><%= currentUser.username %>&#128526; </button>
+          <form class="d-flex" action="/logout" method="GET">  
+            <button class="btn btn-outline-danger" type="submit">Logout</button>
+          </form>
+        <% } %>
+
+
+      </div>
+    </div>
+  </nav>

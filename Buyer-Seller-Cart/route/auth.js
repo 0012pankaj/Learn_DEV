@@ -1,6 +1,6 @@
 const express=require("express");
 const passport = require('passport'); // for using authenticate middleware and .register 
-const User = require("../model/user");
+const User = require("../model/User");
 const router=express.Router();
 
 //1 .signup-------------->
@@ -10,10 +10,11 @@ router.get('/register',(req,res)=>{
 
   //add the user data to userDB
 router.post('/register',async(req,res)=>{
-    const {email,password,username}=req.body;
-    const user=new User({email,username});
+    const {email,password,username,role}=req.body;
+    const user=new User({email,username,role});
     const newuser=await User.register(user,password);//add slat with passward and save it in hash form user DB
-    // res.send(newuser);
+    // res.send(newuser);                            //static method of PLM
+    req.flash('success' , 'welcome,  you are registed succesfully');
     res.redirect('/login');
 });
 
@@ -28,10 +29,11 @@ router.get('/login',(req,res)=>{
 });
 
   //add the user data to userDB
-router.post('/login',
-passport.authenticate('local', { failureRedirect: '/login' })
+                                             //stetergy-local 
+router.post('/login', passport.authenticate('local', { failureRedirect: '/login' })
 ,(req,res)=>{
     // console.log(req.user);
+    req.flash('success' , 'welcome back')
     res.redirect('/products');
 });
 
@@ -43,8 +45,9 @@ passport.authenticate('local', { failureRedirect: '/login' })
 //logout part ----------------->
 router.get('/logout',(req,res)=>{
    ()=>{
-    req.logout(); 
-  }//always call in callback fun
+    req.logout(); }//always call in callback fun
+
+    req.flash('success' , 'goodbye friends, see you again')
    res.redirect('/login');
 });
 

@@ -1,0 +1,8 @@
+<% layout('layouts/boilerpalte') -%> 
+<!-- to insert this page in main part of boilerpaltewhere body tag inserted  -->
+<!-- bootstrap alleart section -->
+<ul class="mt-5">
+    <% for(let item of user.cart){ %>
+        <li><%=item.name%> --> <%=item.price%></li>
+    <% } %>
+</ul>
